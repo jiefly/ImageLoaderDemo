@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:gravity="center"
+              android:layout_height="wrap_content">
+    <com.gao.jiefly.imageloaderdemo.View.SquareImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/image"
+        android:src="@drawable/image_default"
+        android:scaleType="centerCrop"
+        />
+    <!--scaleType<->CenterCrop:按图片的原来size居中显示，当图片长/宽超过View的长/宽，则截取图片的居中部分显示-->
+</LinearLayout>
