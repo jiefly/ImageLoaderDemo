@@ -39,7 +39,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ImageLoader {
     private static final String TAG = "ImageLoader";
     //暂时
-    private static final int TAG_KEY_URL = R.id.imageloader_url;
+    private static final int TAG_KEY_URL = R.id.imageloader_uri;
     private static final long DISK_CACHE_SIZE = 1024 * 1024 * 50;
     private static final int DISK_CACHE_INDEX = 0;
     private static final int IO_BUFFER_SIZE = 8 * 1024;
