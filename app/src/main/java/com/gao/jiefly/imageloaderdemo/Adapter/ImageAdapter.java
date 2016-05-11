@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 
 import com.gao.jiefly.imageloaderdemo.Loader.ImageLoader;
 import com.gao.jiefly.imageloaderdemo.R;
+import com.gao.jiefly.imageloaderdemo.View.SquareImageView;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by jiefly on 2016/5/10.
  * Fighting_jiiiiie
  */
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapter extends BaseAdapter{
     public  boolean isScoll = false;
     private static int mImageWidth;
     private List<String> urlList;
@@ -55,13 +55,19 @@ public class ImageAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(R.layout.gridview_item, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.mImageView = (ImageView) convertView.findViewById(R.id.image);
+            viewHolder.mImageView = (SquareImageView) convertView.findViewById(R.id.image);
+           /* viewHolder.mImageView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return false;
+                }
+            });*/
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ImageView imageView = viewHolder.mImageView;
+        SquareImageView imageView = viewHolder.mImageView;
 
         final String tag = (String) imageView.getTag();
         final String url = (String) getItem(position);
@@ -70,17 +76,17 @@ public class ImageAdapter extends BaseAdapter {
             imageView.setImageDrawable(defaultDrawable);
         }
         //changeScoll();
+        Log.i("jiefly", "set bitmap ,the flag is:" + isScoll);
         if (isScoll) {
             imageView.setTag(url);
             mImageLoader.bindBitmap(url, imageView, mImageWidth, mImageWidth);
-            Log.i("jiefly", "set bitmap ,the flag is:" + isScoll);
+
         }
         return convertView;
     }
-    public void changeScoll(){}
 
     private static class ViewHolder {
-        public ImageView mImageView;
+        public SquareImageView mImageView;
     }
 
 }

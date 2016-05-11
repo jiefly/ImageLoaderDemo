@@ -3,6 +3,8 @@ package com.gao.jiefly.imageloaderdemo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -21,17 +23,18 @@ public class MainActivity extends Activity implements AbsListView.OnScrollListen
     public BaseAdapter imageAdapter;
     public boolean mIsGridViewIdle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initData();
         GridView mGirdView = (GridView) findViewById(R.id.gridView);
-        imageAdapter = new ImageAdapter(urlList, this, ImageLoader.build(MainActivity.this), mWidth) {
+
+        imageAdapter = new ImageAdapter(urlList, this, ImageLoader.build(MainActivity.this), mWidth){
             @Override
-            public void changeScoll() {
+            public View getView(int position, View convertView, ViewGroup parent) {
                 isScoll = mIsGridViewIdle;
+                return super.getView(position, convertView, parent);
             }
         };
         mGirdView.setAdapter(imageAdapter);
